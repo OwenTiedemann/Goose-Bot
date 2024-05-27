@@ -28,11 +28,11 @@ def prepare_gif():
 def sync_func():
     size = 128, 128
 
-    authorIm = Image.open('../Goose-Bot/slap/author.png')
+    authorIm = Image.open('slap/author.png')
     authorIm.thumbnail(size, Image.LANCZOS)
-    userIm = Image.open('../Goose-Bot/slap/user.png')
+    userIm = Image.open('slap/user.png')
     userIm.thumbnail(size, Image.LANCZOS)
-    batmanIm = Image.open('../Goose-Bot/slap/batman.jpg')
+    batmanIm = Image.open('slap/batman.jpg')
 
     batmanIm.paste(authorIm, (150, 25))
     batmanIm.paste(userIm, (300, 110))
@@ -68,7 +68,7 @@ class MemeCog(commands.Cog):
 
         some_stuff = await self.client.loop.run_in_executor(None, thing)
 
-        file = discord.File("../Goose-Bot/slap/slap.png")
+        file = discord.File("slap/slap.png")
         await ctx.send(file=file)
 
 
