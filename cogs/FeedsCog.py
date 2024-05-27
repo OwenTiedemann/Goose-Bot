@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 from discord.ext import commands, tasks
 import feedparser
@@ -21,12 +22,9 @@ class FeedsCog(commands.Cog):
             print('Posting feed ' + feed_url)
             feed = feedparser.parse(feed_url)
 
-            for item in feed.entries:
-                print(time.mktime(time.localtime()) - time.mktime(item.published_parsed))
-
             last_hour = [entry for entry in feed.entries if
-                         (time.mktime(time.localtime()) - time.mktime(entry.published_parsed) < 3600) and (
-                                     time.mktime(time.localtime()) - time.mktime(entry.published_parsed) > 0)]
+                         ((time.time() - time.mktime(entry.published_parsed) - (4 * 3600)) < 3600) and (
+                                     (time.time() - time.mktime(entry.published_parsed) - (4 * 3600) > 0))]
             for post in last_hour:
                 print('Posting: ' + post.link)
                 await channel.send(post.link)
