@@ -13,8 +13,10 @@ intents.members = True
 intents.guilds = True
 
 DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
+NEWS_CHANNEL_ID=os.environ['NEWS_CHANNEL_ID']
 
 client = commands.Bot(command_prefix=["!"], intents=intents)
+client.NEWS_CHANNEL_ID = NEWS_CHANNEL_ID
 
 cogs = ('cogs.MemeCog', 'cogs.FeedsCog')
 

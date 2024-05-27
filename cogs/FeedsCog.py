@@ -4,7 +4,7 @@ from datetime import datetime
 from discord.ext import commands, tasks
 import feedparser
 
-feed_urls = ['https://feeds.feedburner.com/ign/games-all']
+feed_urls = ['https://feeds.feedburner.com/ign/games-all', 'https://www.windowscentral.com/rss.xml', 'https://news.xbox.com/en-us/feed/']
 
 
 class FeedsCog(commands.Cog):
@@ -15,8 +15,7 @@ class FeedsCog(commands.Cog):
 
     @tasks.loop(hours=1)
     async def post_feeds(self):
-        channel = await self.client.fetch_channel(1143292455433801739)
-        print(channel)
+        channel = await self.client.fetch_channel(self.client.NEWS_CHANNEL_ID)
         print('Posting feeds')
         for feed_url in feed_urls:
             print('Posting feed ' + feed_url)
