@@ -20,8 +20,7 @@ class FeedsCog(commands.Cog):
         for feed_url in feed_urls:
             print('Posting feed ' + feed_url)
             feed = feedparser.parse(feed_url)
-
-            print(len(feed))
+            print(feed)
 
             for item in feed:
                 print(time.mktime(time.localtime()) - time.mktime(item.published_parsed))
