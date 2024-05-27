@@ -16,8 +16,8 @@ def prepare_gif():
         profilePic.thumbnail(options['size'], Image.LANCZOS)
         frame.paste(profilePic, options["coords"])
         text = ImageDraw.Draw(frame)
-        myFont = ImageFont.truetype('arial.ttf', 50)
-        text.text((115, 140), "YEET", font=myFont)
+        font = ImageFont.load_default()
+        text.text((115, 140), "YEET", font=font)
         images.append(frame)
         profilePic.thumbnail(size, Image.LANCZOS)
 
