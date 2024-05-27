@@ -23,7 +23,7 @@ class FeedsCog(commands.Cog):
             last_hour = [entry for entry in feed.entries if
                          (time.time() - time.mktime(entry.published_parsed) < 3600) and (
                                      time.time() - time.mktime(entry.published_parsed) > 0)]
-
+            print(len(last_hour))
             for post in last_hour:
                 print('Posting: ' + post.link)
                 await channel.send(post.link)
