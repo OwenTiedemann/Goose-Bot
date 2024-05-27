@@ -20,6 +20,12 @@ class FeedsCog(commands.Cog):
         for feed_url in feed_urls:
             print('Posting feed ' + feed_url)
             feed = feedparser.parse(feed_url)
+
+            print(len(feed))
+
+            for item in feed:
+                print(time.mktime(time.localtime()) - time.mktime(item.published_parsed))
+
             last_hour = [entry for entry in feed.entries if
                          (time.mktime(time.localtime()) - time.mktime(entry.published_parsed) < 3600) and (
                                      time.mktime(time.localtime()) - time.mktime(entry.published_parsed) > 0)]
