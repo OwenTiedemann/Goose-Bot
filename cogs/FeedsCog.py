@@ -21,9 +21,8 @@ class FeedsCog(commands.Cog):
             print('Posting feed ' + feed_url)
             feed = feedparser.parse(feed_url)
             last_hour = [entry for entry in feed.entries if
-                         (time.time() - time.mktime(entry.published_parsed) < 3600) and (
-                                     time.time() - time.mktime(entry.published_parsed) > 0)]
-            print(len(last_hour))
+                         (time.mktime(time.localtime()) - time.mktime(entry.published_parsed) < 3600) and (
+                                     time.mktime(time.localtime()) - time.mktime(entry.published_parsed) > 0)]
             for post in last_hour:
                 print('Posting: ' + post.link)
                 await channel.send(post.link)
