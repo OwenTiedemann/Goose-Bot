@@ -4,7 +4,10 @@ from datetime import datetime
 from discord.ext import commands, tasks
 import feedparser
 
-feed_urls = ['https://feeds.feedburner.com/ign/games-all', 'https://www.windowscentral.com/rss.xml', 'https://news.xbox.com/en-us/feed/']
+feed_urls = ['https://feeds.feedburner.com/ign/games-all',
+             'https://www.windowscentral.com/rss.xml',
+             'https://news.xbox.com/en-us/feed/',
+             'https://www.theverge.com/rss/games/index.xml']
 
 
 class FeedsCog(commands.Cog):
@@ -25,8 +28,15 @@ class FeedsCog(commands.Cog):
                          ((time.time() - time.mktime(entry.published_parsed) - (4 * 3600)) < 3600) and (
                                      (time.time() - time.mktime(entry.published_parsed) - (4 * 3600) > 0))]
             for post in last_hour:
-                print('Posting: ' + post.link)
-                await channel.send(post.link)
+                if feed_url == 'https://www.theverge.com/rss/games/index.xml':
+                    if post.author == 'Tom Warren':
+                        print('Posting: ' + post.link)
+                        await channel.send(post.link)
+                    else:
+                        print("The verge had a post not by tom warren: " + post.author)
+                else:
+                    print('Posting: ' + post.link)
+                    await channel.send(post.link)
 
 
 async def setup(client):
