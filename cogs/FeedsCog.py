@@ -7,7 +7,15 @@ import feedparser
 feed_urls = ['https://feeds.feedburner.com/ign/games-all',
              'https://www.windowscentral.com/rss.xml',
              'https://news.xbox.com/en-us/feed/',
-             'https://www.theverge.com/rss/games/index.xml']
+             'https://www.theverge.com/rss/games/index.xml',
+             'https://www.inverse.com/rss']
+
+
+def contains(list, filter):
+    for x in list:
+        if filter(x):
+            return True
+    return False
 
 
 class FeedsCog(commands.Cog):
@@ -34,6 +42,10 @@ class FeedsCog(commands.Cog):
                         await channel.send(post.link)
                     else:
                         print("The verge had a post not by tom warren: " + post.author)
+                elif feed_url == 'https://www.inverse.com/rss':
+                    if contains(post.tags, lambda x: x.term == 'Gaming'):
+                        print('Posting: ' + post.link)
+                        await channel.send(post.link)
                 else:
                     print('Posting: ' + post.link)
                     await channel.send(post.link)
