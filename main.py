@@ -1,9 +1,8 @@
 import os
 
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 from dotenv import load_dotenv
-
 
 load_dotenv()
 
@@ -13,7 +12,7 @@ intents.members = True
 intents.guilds = True
 
 DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
-NEWS_CHANNEL_ID=os.environ['NEWS_CHANNEL_ID']
+NEWS_CHANNEL_ID = os.environ['NEWS_CHANNEL_ID']
 
 client = commands.Bot(command_prefix=["!"], intents=intents)
 client.NEWS_CHANNEL_ID = NEWS_CHANNEL_ID
