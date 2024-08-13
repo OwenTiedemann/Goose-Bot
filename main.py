@@ -25,11 +25,12 @@ COUNT = 0
 
 @client.event
 async def on_message(message):
+    global COUNT
     if message.author == client.user:
         return
 
     random_value = random.randrange(1, 100)
-    print(random_value + " " + COUNT)
+    print(random_value, COUNT)
 
     if 1 == random_value:
         await message.reply('What in the fuck is wrong with you, you sick fuck!')
