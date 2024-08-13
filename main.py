@@ -3,6 +3,7 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+import random
 
 load_dotenv()
 
@@ -18,6 +19,15 @@ client = commands.Bot(command_prefix=["!"], intents=intents)
 client.NEWS_CHANNEL_ID = NEWS_CHANNEL_ID
 
 cogs = ('cogs.MemeCog', 'cogs.FeedsCog')
+
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if 1 == random.randrange(1, 1000):
+        await message.reply('What in the fuck is wrong with you, you sick fuck!')
 
 
 @client.event
