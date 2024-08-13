@@ -26,7 +26,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if 1 == random.randrange(1, 1000):
+    random_value = random.randrange(1, 100)
+    print(random_value)
+
+    if 1 == random_value:
         await message.reply('What in the fuck is wrong with you, you sick fuck!')
 
 
