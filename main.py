@@ -20,6 +20,8 @@ client.NEWS_CHANNEL_ID = NEWS_CHANNEL_ID
 
 cogs = ('cogs.MemeCog', 'cogs.FeedsCog')
 
+COUNT = 0
+
 
 @client.event
 async def on_message(message):
@@ -27,10 +29,12 @@ async def on_message(message):
         return
 
     random_value = random.randrange(1, 100)
-    print(random_value)
+    print(random_value + " " + COUNT)
 
     if 1 == random_value:
         await message.reply('What in the fuck is wrong with you, you sick fuck!')
+    else:
+        COUNT = COUNT + 1
 
 
 @client.event
