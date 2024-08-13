@@ -33,6 +33,7 @@ async def on_message(message):
     print(random_value, COUNT)
 
     if 1 == random_value:
+        COUNT = 0
         await message.reply('What in the fuck is wrong with you, you sick fuck!')
     else:
         COUNT = COUNT + 1
