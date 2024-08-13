@@ -29,7 +29,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    random_value = random.randrange(1, 100)
+    random_value = random.randrange(1, 1000)
     print(random_value, COUNT)
 
     if 1 == random_value:
