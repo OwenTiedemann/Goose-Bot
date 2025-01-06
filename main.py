@@ -20,23 +20,21 @@ client.NEWS_CHANNEL_ID = NEWS_CHANNEL_ID
 
 cogs = ('cogs.MemeCog', 'cogs.FeedsCog')
 
-COUNT = 0
-
 
 @client.event
 async def on_message(message):
-    global COUNT
     if message.author == client.user:
         return
 
     random_value = random.randrange(1, 1000)
-    print(random_value, COUNT)
 
     if 1 == random_value:
-        COUNT = 0
         await message.reply('What in the fuck is wrong with you, you sick fuck!')
-    else:
-        COUNT = COUNT + 1
+
+    random_value = random.randrange(1, 100)
+
+    if 1 == random_value:
+        await message.reply('This message has been randomly selected, please pay $10 before proceeding.')
 
 
 @client.event
