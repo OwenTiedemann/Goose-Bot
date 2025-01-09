@@ -33,8 +33,8 @@ async def on_message(message):
 
     random_value = random.randrange(1, 100)
 
-    if 1 == random_value:
-        await message.reply('This message has been randomly selected, please pay $10 before proceeding.')
+    #if 1 == random_value:
+    # await message.reply('This message has been randomly selected, please pay $10 before proceeding.')
 
 
 @client.event
