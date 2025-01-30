@@ -33,7 +33,7 @@ async def on_message(message):
 
     random_value = random.randrange(1, 100)
 
-    await client.process_commands(msg)
+    await client.process_commands(message)
 
     #if 1 == random_value:
     # await message.reply('This message has been randomly selected, please pay $10 before proceeding.')
